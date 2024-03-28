@@ -4,10 +4,10 @@ local M = {}
 ---@type table<{name:string, ext:string, label:string, both_styles:boolean, url:string}>
 -- stylua: ignore
 M.extras = {
-  { name = "palettes", ext = "lua", label = "Monokai Nightasty Palettes", both_styles = true, url = "https://github.com/polirritmico/monokai-nightasty.nvim/tree/main/extras/palettes" },
-  { name = "kitty", ext = "conf", label = "Kitty", both_styles = true, url = "https://sw.kovidgoyal.net/kitty/" },
-  { name = "tmux", ext = "tmux", label = "Tmux", both_styles = false, url = "https://github.com/tmux/tmux/wiki" },
-  { name = "zathura", ext = "zathurarc", label = "Zathura", both_styles = false, url = "https://pwmt.org/projects/zathura/" },
+  { name = "palettes", ext = "lua",       label = "Martykai Palettes", both_styles = true,  url = "https://github.com/MartyBeGood/martykai.nvim/tree/main/extras/palettes" },
+  { name = "kitty",    ext = "conf",      label = "Kitty",             both_styles = true,  url = "https://sw.kovidgoyal.net/kitty/" },
+  { name = "tmux",     ext = "tmux",      label = "Tmux",              both_styles = false, url = "https://github.com/tmux/tmux/wiki" },
+  { name = "zathura",  ext = "zathurarc", label = "Zathura",           both_styles = false, url = "https://pwmt.org/projects/zathura/" },
 }
 
 local function write(str, fileName)
@@ -46,28 +46,28 @@ function M.fill_extras_in_readme()
   M.write_file(file, readme)
 end
 
---- Run this function through require("monokai-nightasty.extras").setup() to
+--- Run this function through require("martykai.extras").setup() to
 --- generate the files into 'extras/...' (at pwd)
 function M.setup()
   M.fill_extras_in_readme()
 
   for _, extra in ipairs(M.extras) do
-    package.loaded["monokai-nightasty.extras." .. extra.name] = nil
-    local plugin = require("monokai-nightasty.extras." .. extra.name)
+    package.loaded["martykai.extras." .. extra.name] = nil
+    local plugin = require("martykai.extras." .. extra.name)
 
     -- Dark Theme
-    local colors = require("monokai-nightasty.colors").setup({ force_style = "dark" })
-    local filename = "extras/" .. extra.name .. "/monokai-nightasty_dark." .. extra.ext
-    colors["_upstream_url"] = "https://github.com/polirritmico/monokai-nightasty.nvim/raw/main/" .. filename
-    colors["_style_name"] = "Monokai NighTasty Dark"
+    local colors = require("martykai.colors").setup({ force_style = "dark" })
+    local filename = "extras/" .. extra.name .. "/martykai_dark." .. extra.ext
+    colors["_upstream_url"] = "https://github.com/MartyBeGood/martykai.nvim/raw/main/" .. filename
+    colors["_style_name"] = "Martykai Dark"
     write(plugin.generate(colors), filename)
 
     -- Light Theme
     if extra.both_styles then
-      colors = require("monokai-nightasty.colors").setup({ force_style = "light" })
-      filename = "extras/" .. extra.name .. "/monokai-nightasty_light." .. extra.ext
-      colors["_upstream_url"] = "https://github.com/polirritmico/monokai-nightasty.nvim/raw/main/" .. filename
-      colors["_style_name"] = "Monokai NighTasty Light"
+      colors = require("martykai.colors").setup({ force_style = "light" })
+      filename = "extras/" .. extra.name .. "/martykai_light." .. extra.ext
+      colors["_upstream_url"] = "https://github.com/MartyBeGood/martykai.nvim/raw/main/" .. filename
+      colors["_style_name"] = "Martykai Light"
       write(plugin.generate(colors), filename)
     end
   end

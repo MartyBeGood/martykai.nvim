@@ -1,4 +1,4 @@
-local util = require("monokai-nightasty.util")
+local util = require("martykai.util")
 
 local M = {}
 
@@ -95,7 +95,7 @@ M.light_palette = {
 
 ---@return ColorScheme
 function M.setup(opts)
-  local config = require("monokai-nightasty.config")
+  local config = require("martykai.config")
   local is_light = (not opts or not opts.force_style) and config.is_light() or opts and opts.force_style == "light"
 
   local bg_cfg = is_light and config.options.light_style_background or config.options.dark_style_background

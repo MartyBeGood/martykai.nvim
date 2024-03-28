@@ -1,4 +1,4 @@
-local util = require("monokai-nightasty.util")
+local util = require("martykai.util")
 
 local M = {}
 

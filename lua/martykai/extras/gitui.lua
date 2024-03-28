@@ -1,4 +1,4 @@
-local util = require("monokai-nightasty.util")
+local util = require("martykai.util")
 
 local function hex2rgb(key, value)
   local hex = value:gsub("#", "")
