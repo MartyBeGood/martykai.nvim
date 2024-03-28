@@ -8,11 +8,16 @@ M.default = {
 
   -- Base colors
   blue = "#62d8f1",
+  blue_alt = "#0087ff",
   green = "#a4e400",
-  magenta = "#fc1a70",
+  magenta = "#e34481",
   orange = "#ff9700",
   purple = "#af87ff",
   yellow = "#ffff87",
+  yellow_alt = "#f6f557",
+  green_alt = "#83dc78",
+  green_unchanged = "#a4e400",
+  red = "#eb5247",
 
   -- Neutrals
   black = "#000001", -- #000000 could change to transparent
@@ -39,57 +44,52 @@ M.default = {
   fg = "#ffffff",
 
   -- Extra colors
-  blue_alt = "#0087ff",
-  green_alt = "#83dc78",
-  green_unchanged = "#a4e400",
-  red = "#ff005f",
-  yellow_alt = "#f6f557",
   git = {
     add = "#a4e400",
     change = "#ff9700",
-    delete = "#fc1a70",
+    delete = "#eb5247",
   },
 }
 
 ---@type Palette
 M.light_palette = {
   -- Base colors               -- Dark color
-  blue = "#00b3e3", -- #62d8f1
-  green = "#4fb000", -- #a4e400
-  magenta = "#ff004b",
-  orange = "#ff4d00",
+  blue = "#0043c3",      -- #62d8f1
+  green = "#207000",     -- #a4e400
+  green_alt = "#30a000", -- #83dc78
+  magenta = "#d0325c",
+  orange = "#cf3000",
   purple = "#6054d0",
-  yellow = "#ff8f00",
+  yellow = "#df6f00",
 
   -- Neutrals (inverted)
-  grey_lighter = "#171717", -- #e8e8e8
-  grey_light = "#4c4c4c", -- #bcbcbc
-  grey = "#7f7f7f", -- #8a8a8a
-  grey_medium = "#a5a5a5", -- #585858
-  grey_dark = "#b2b2b2", -- #4b4b4b
-  grey_darker = "#bfbfbf", -- #444444
+  grey_lighter = "#171717",    -- #e8e8e8
+  grey_light = "#4c4c4c",      -- #bcbcbc
+  grey = "#7f7f7f",            -- #8a8a8a
+  grey_medium = "#a5a5a5",     -- #585858
+  grey_dark = "#b2b2b2",       -- #4b4b4b
+  grey_darker = "#bfbfbf",     -- #444444
   grey_darker_alt = "#c9c9c9", -- #3e3e3e
   charcoal_medium = "#dedede", -- #2b2b2b
-  charcoal_light = "#d8d8d8", -- #313131
-  charcoal = "#e3e3e3", -- #262626
+  charcoal_light = "#d8d8d8",  -- #313131
+  charcoal = "#e3e3e3",        -- #262626
 
   -- Functionals
-  fg_dark = "#0e0e0e", -- #e6e6e6;
-  fg = "#333333", -- #ffffff
-  comment = "#7f7f7f", -- #8a8a8a
+  fg_dark = "#0e0e0e",        -- #e6e6e6;
+  fg = "#333333",             -- #ffffff
+  comment = "#7f7f7f",        -- #8a8a8a
   terminal_black = "#bfbfbf", -- #444444
-  fg_gutter = "#c9c9c9", -- #3e3e3e
-  bg_darker = "#d0d0d0", -- #262626
-  bg_dark = "#e1e1e1", -- #121212
-  bg = "#ffffff", -- #2b2b2b
+  fg_gutter = "#c9c9c9",      -- #3e3e3e
+  bg_darker = "#d0d0d0",      -- #262626
+  bg_dark = "#e1e1e1",        -- #121212
+  bg = "#ffffff",             -- #2b2b2b
 
   -- Extra colors
-  green_unchanged = "#a4e400",
-  green_alt = "#4fb000", -- #83dc78
+  green_unchanged = "#207000",
   git = {
-    add = "#4fb000",
-    change = "#ff4d00",
-    delete = "#ff004b",
+    add = "#30a000",
+    change = "#df6f00",
+    delete = "#cf3000",
   },
 }
 
@@ -108,8 +108,8 @@ function M.setup(opts)
   local colors = vim.tbl_deep_extend("force", vim.deepcopy(M.default), palette)
 
   colors.bg = (bg_cfg == "dark" or bg_cfg == "transparent") and colors.bg_dark
-    or string.sub(bg_cfg, 1, 1) == "#" and bg_cfg
-    or colors.bg
+      or string.sub(bg_cfg, 1, 1) == "#" and bg_cfg
+      or colors.bg
   colors.bg_dark = colors.bg == colors.bg_dark and colors.bg_darker or colors.bg_dark
 
   -- Default values for functions util.darken() and util.lighter()
@@ -126,13 +126,13 @@ function M.setup(opts)
 
   -- Sidebar and Floats
   colors.bg_sidebar = config.options.hl_styles.sidebars == "transparent" and colors.none
-    or config.options.hl_styles.sidebars == "dark" and colors.bg_dark
-    or is_light and colors.bg_statusline
-    or colors.charcoal
+      or config.options.hl_styles.sidebars == "dark" and colors.bg_dark
+      or is_light and colors.bg_statusline
+      or colors.charcoal
   colors.bg_float = config.options.hl_styles.floats == "transparent" and colors.none
-    or (config.options.hl_styles.floats == "dark" and is_light) and colors.charcoal_medium
-    or config.options.hl_styles.floats == "dark" and colors.bg_dark
-    or colors.charcoal
+      or (config.options.hl_styles.floats == "dark" and is_light) and colors.charcoal_medium
+      or config.options.hl_styles.floats == "dark" and colors.bg_dark
+      or colors.charcoal
   colors.fg_float = colors.fg
 
   -- Set the background for the current line (current cursor position)
