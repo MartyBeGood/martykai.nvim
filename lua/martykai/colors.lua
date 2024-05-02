@@ -10,13 +10,13 @@ M.default = {
   blue = "#62d8f1",
   blue_alt = "#0087ff",
   green = "#a4e400",
+  green_alt = "#83dc78",
+  green_unchanged = "#a4e400",
   magenta = "#e34481",
   orange = "#ff9700",
   purple = "#af87ff",
   yellow = "#ffff87",
   yellow_alt = "#f6f557",
-  green_alt = "#83dc78",
-  green_unchanged = "#a4e400",
   red = "#eb5247",
 
   -- Neutrals
@@ -53,26 +53,26 @@ M.default = {
 
 ---@type Palette
 M.light_palette = {
-  -- Base colors               -- Dark color
-  blue = "#0043c3",      -- #62d8f1
-  green = "#207000",     -- #a4e400
-  green_alt = "#30a000", -- #83dc78
+  -- Base colors
+  blue = "#0043c3",
+  green = "#207000",
+  green_alt = "#30a000",
   magenta = "#d0325c",
   orange = "#cf3000",
   purple = "#6054d0",
   yellow = "#df6f00",
 
   -- Neutrals (inverted)
-  grey_lighter = "#171717",    -- #e8e8e8
-  grey_light = "#4c4c4c",      -- #bcbcbc
-  grey = "#7f7f7f",            -- #8a8a8a
-  grey_medium = "#a5a5a5",     -- #585858
-  grey_dark = "#b2b2b2",       -- #4b4b4b
-  grey_darker = "#bfbfbf",     -- #444444
-  grey_darker_alt = "#c9c9c9", -- #3e3e3e
-  charcoal_medium = "#dedede", -- #2b2b2b
-  charcoal_light = "#d8d8d8",  -- #313131
-  charcoal = "#e3e3e3",        -- #262626
+  grey_lighter = "#171717",
+  grey_light = "#4c4c4c",
+  grey = "#7f7f7f",
+  grey_medium = "#a5a5a5",
+  grey_dark = "#b2b2b2",
+  grey_darker = "#bfbfbf",
+  grey_darker_alt = "#c9c9c9",
+  charcoal_medium = "#dedede",
+  charcoal_light = "#d8d8d8",
+  charcoal = "#e3e3e3",
 
   -- Functionals
   fg_dark = "#0e0e0e",        -- #e6e6e6;
