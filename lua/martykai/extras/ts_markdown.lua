@@ -23,17 +23,17 @@ function M.set_headers_marks()
   end
   vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
     pattern = { "*.md", "*.markdown" },
-    group = vim.api.nvim_create_augroup("MonokaiNightastyTSfix", {}),
+    group = vim.api.nvim_create_augroup("MartykaiTSfix", {}),
     once = true,
     desc = "Enable Treesitter `#` headers marks",
     callback = function(_)
       local ok, md_query = pcall(M.read_markdown_highlights_query)
       if not ok then
-        vim.notify("monokai-nightasty: Can't access treesitter markdown highlights query file.", vim.log.levels.WARN)
+        vim.notify("martykai: Can't access treesitter markdown highlights query file.", vim.log.levels.WARN)
         return
       end
       md_query = md_query
-        .. [=[;; extends
+          .. [=[;; extends
         (atx_heading (atx_h1_marker) @markup.heading.1.marker)
         (atx_heading (atx_h2_marker) @markup.heading.2.marker)
         (atx_heading (atx_h3_marker) @markup.heading.3.marker)

@@ -1,5 +1,5 @@
-local util = require("monokai-nightasty.util")
-local colors = require("monokai-nightasty.colors")
+local util = require("martykai.util")
+local colors = require("martykai.colors")
 
 local M = {}
 --
@@ -14,7 +14,7 @@ local M = {}
 ---@param palette ColorScheme|nil
 ---@return Theme
 function M.setup(palette)
-  local config = require("monokai-nightasty.config")
+  local config = require("martykai.config")
   local options = config.options
   options.transparent = options.transparent or false
 
@@ -29,7 +29,8 @@ function M.setup(palette)
 
   theme.highlights = {
     ColorColumn = { bg = c.bg_columns }, -- used for the columns set with 'colorcolumn'
-    Comment = { fg = c.comment, style = options.hl_styles.comments }, -- any comment
+    Comment = { fg = c.green_alt, style = options.hl_styles.comments }, -- any comment
+    CommentDim = { fg = c.comment, style = options.hl_styles.comments }, -- any comment not deemed important
     Conceal = {}, -- Placeholder characters substituted for concealed text (see 'conceallevel')
     CurSearch = { link = "IncSearch" },
     Cursor = { fg = c.bg, bg = c.blue }, -- character under the cursor
@@ -252,7 +253,7 @@ function M.setup(palette)
     -- Keywords
     ["@keyword"] = { fg = c.magenta, style = options.hl_styles.keywords }, -- keywords not fitting into specific categories
     ["@keyword.coroutine"] = { link = "@keyword" }, -- keywords related to coroutines (e.g. `go` in Go, `async/await` in Python)
-    ["@keyword.function"] = { fg = c.blue, italic = true }, -- keywords that define a function (e.g. `func` in Go, `def` in Python)
+    ["@keyword.function"] = { fg = c.magenta }, -- keywords that define a function (e.g. `func` in Go, `def` in Python)
     ["@keyword.operator"] = { link = "Operator" }, -- operators that are English words (e.g. `and` / `or`)
     ["@keyword.import"] = { link = "Include" }, -- keywords for including modules (e.g. `import` / `from` in Python)
     ["@keyword.storage"] = { link = "StorageClass" }, -- modifiers that affect storage in memory or life-time
@@ -389,6 +390,45 @@ function M.setup(palette)
     -- ALEWarningSign = { fg = c.warning },
     -- DapStoppedLine = { bg = util.darken(c.warning, 0.1) }, -- Used for "Warning" diagnostic virtual text
 
+    diffComment = { link = "CommentDim" },
+    CopilotSuggestion = { link = "CommentDim" },
+    CopilotAnnotation = { link = "CommentDim" },
+    cssHacks = { link = "CommentDim" },
+    dtdComment = { link = "CommentDim" },
+    dtdParamEntityDPunct = { link = "CommentDim" },
+    GitComment = { link = "CommentDim" },
+    gitcommitComment = { link = "CommentDim" },
+    gitcommitOnBranch = { link = "CommentDim" },
+    gitcommitArrow = { link = "CommentDim" },
+    gitcommitDiscardedArrow = { link = "CommentDim" },
+    gitcommitSelectedArrow = { link = "CommentDim" },
+    gitcommitUnmergedArrow = { link = "CommentDim" },
+    hamlComment = { link = "CommentDim" },
+    hamlHtmlComment = { link = "CommentDim" },
+    htmlComment = { link = "CommentDim" },
+    htmlCssStyleComment = { link = "CommentDim" },
+    LspInfoTip = { link = "CommentDim" },
+    markdownBlockquote = { link = "CommentDim" },
+    rubyRegexpComment = { link = "CommentDim" },
+    rubyComment = { link = "CommentDim" },
+    rubyDocumentation = { link = "CommentDim" },
+    rubyData = { link = "CommentDim" },
+    TelescopeResultsComment = { link = "CommentDim" },
+    TroubleCode = { link = "CommentDim" },
+    TroubleSource = { link = "CommentDim" },
+    vbComment = { link = "CommentDim" },
+    vbLineLabel = { link = "CommentDim" },
+    vbLineNumber = { link = "CommentDim" },
+    xmlAttribPunct = { link = "CommentDim" },
+    xmlComment = { link = "CommentDim" },
+    xmlCommentStart = { link = "CommentDim" },
+    xmlCommentPart = { link = "CommentDim" },
+    xmlProcessingDelim = { link = "CommentDim" },
+    DiffviewDiffDeleteDim = { link = "CommentDim" },
+    DiffviewStatusIgnored = { link = "CommentDim" },
+    DiffviewFilePanelPath = { link = "CommentDim" },
+    LazyComment = { link = "CommentDim" },
+    ["@comment.gitcommit"] = { link = "CommentDim" },
     --- Plugins ----------------------------------------------------------------
 
     --- Aerial
@@ -872,6 +912,14 @@ function M.setup(palette)
     for _, plugin in pairs(kind_plugins) do
       theme.highlights[plugin:format(kind)] = { link = base }
     end
+  end
+
+  -- Smart comments
+  local dimCommentGroups = {}
+
+  -- loop over the dimCommentGroups and link them to CommentDim
+  for group, _ in pairs(dimCommentGroups) do
+    theme.highlights[group] = { link = "CommentDim" }
   end
 
   -- Rainbow headers

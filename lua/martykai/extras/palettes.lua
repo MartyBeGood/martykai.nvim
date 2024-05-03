@@ -18,9 +18,9 @@ function M.generate(colors)
   colors._style_name = nil
 
   local ret = "local colors = "
-    .. vim.inspect(colors)
-    .. "\n\nlocal highlights = "
-    .. vim.inspect(deepcopy(require("monokai-nightasty.theme").setup(colors).highlights))
+      .. vim.inspect(colors)
+      .. "\n\nlocal highlights = "
+      .. vim.inspect(deepcopy(require("martykai.theme").setup(colors).highlights))
   return ret
 end
 

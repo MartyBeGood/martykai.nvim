@@ -1,21 +1,16 @@
-# 🫖 Monokai NighTasty
+# 🫖 Martykai
 
 <!-- panvimdoc-ignore-start -->
 
 ![Pull Requests](https://img.shields.io/badge/Pull_Requests-Welcome-a4e400?style=flat-square)
-![GitHub last commit](https://img.shields.io/github/last-commit/polirritmico/monokai-nightasty.nvim/main?style=flat-square&color=62d8f1)
-![GitHub issues](https://img.shields.io/github/issues/polirritmico/monokai-nightasty.nvim?style=flat-square&color=fc1a70)
+![GitHub last commit](https://img.shields.io/github/last-commit/MartyBeGood/martykai.nvim/main?style=flat-square&color=62d8f1)
+![GitHub issues](https://img.shields.io/github/issues/MartyBeGood/martykai.nvim?style=flat-square&color=e34481)
 
 <!-- panvimdoc-ignore-end -->
 
 ## 🐧 Description
 
-A dark/light theme for Neovim based on the Monokai color palette. This theme is
-born from a mix between the code of the great
-[tokyonight.nvim](https://github.com/folke/tokyonight.nvim) and the palette of
-the flavorful
-[vim-monokai-tasty](https://github.com/patstockwell/vim-monokai-tasty).
-
+A dark/light theme for Neovim loosely based on the Monokai color palette. Think Monokai, with slightly more muted magenta, and a light theme that uses (much) darker shades of the Monokai palette.
 <!-- panvimdoc-ignore-start -->
 
 ![Monokai-NighTasty](https://github.com/polirritmico/monokai-nightasty.nvim/assets/24460484/57bcbc64-cc1a-4f8f-8ebe-75f4bcd6c96d)
@@ -24,17 +19,14 @@ the flavorful
 
 ## 🌆 Features
 
-- Infused with the Monokai palette for a vibrant, distraction-free coding
-  experience.
-- Avoid eye strain by seamlessly toggling between clear and dark styles at your
-  fingertips, whether you're at your station or out in the wild.
+- 'Just works' in light and dark terminals. No need to set `bg=light|dark|whatever`
 - Support for popular plugins like treesitter, cmp, telescope, gitsigns,
   lualine, indent-blankline, which-key, notify, noice, todo-comments and more.
-- Highly customizable for your coding needs.
+- Upcoming: Smarter comment highlighting. Inline comments should be easily visible, everything else should stay out of your way.
 
 <!-- panvimdoc-ignore-start -->
 
-## 📷 Screenshots
+## 📷 Screenshots (All from )
 
 ### 🌙 Dark Theme
 
@@ -66,7 +58,7 @@ Install with your package manager.
 ```lua
 -- Lazy
 {
-    "polirritmico/monokai-nightasty.nvim",
+    "MartyBeGood/martykai.nvim",
     lazy = false,
     priority = 1000,
 }
@@ -80,7 +72,7 @@ No need to use the `setup()` function, just set the `colorscheme`:
 
 ```lua
 vim.opt.background = "dark" -- default to dark or light style
-vim.cmd.colorscheme("monokai-nightasty")
+vim.cmd.colorscheme("martykai")
 ```
 
 #### 💡 Toggle function
@@ -94,20 +86,20 @@ The Dark/light styles could be toggled by calling the provided function:
 In **Lua**:
 
 ```lua
-require("monokai-nightasty").toggle()
+require("martykai").toggle()
 ```
 
 ### Lualine
 
 ```lua
 require("lualine").setup({
-    options = { theme = "monokai-nightasty" },
+    options = { theme = "martykai" },
 })
 ```
 
 ### ⚙️ Advanced configuration
 
-> ⚠️ Set the configuration **BEFORE** calling `colorscheme monokai-nightasty`.
+> ⚠️ Set the configuration **BEFORE** calling `colorscheme martykai`.
 
 #### Full defaults:
 
@@ -151,11 +143,11 @@ Monokai Nightasty comes with these defaults:
 
 ```lua
 return {
-    "polirritmico/monokai-nightasty.nvim",
+    "polirritmico/martykai.nvim",
     lazy = false,
     priority = 1000,
     keys = {
-        { "<leader>tt", "<cmd>MonokaiToggleLight<cr>", desc = "Monokai-Nightasty: Toggle dark/light theme." },
+        { "<leader>tt", "<cmd>MonokaiToggleLight<cr>", desc = "martykai: Toggle dark/light theme." },
     },
     opts = {
         dark_style_background = "transparent", -- default, dark, transparent, #color
@@ -194,7 +186,7 @@ return {
         -- Default to dark theme
         vim.o.background = "dark"  -- dark | light
 
-        require("monokai-nightasty").load(opts)
+        require("martykai").load(opts)
     end,
 
 }
@@ -228,7 +220,7 @@ alternatives:
 2. Check the generated palettes in the [extras](#-extras).
 3. For the theme with the color names instead of the colors code, you could
    check directly the `theme.lua` or `colors.lua` files inside the
-   `lua/monokai-nightasty/` directory.
+   `lua/martykai/` directory.
 
 You could set colors for `light` or `dark` themes using boolean logic:
 
@@ -281,7 +273,7 @@ To enable this feature, set the `markdown_header_marks` option to `true`
 Just source the theme file:
 
 ```bash
-source-file 'path/to/monokai-nightasty_dark.tmux'
+source-file 'path/to/martykai_dark.tmux'
 ```
 
 #### Fix `undercurls` in [Tmux](https://github.com/tmux/tmux)
@@ -301,7 +293,7 @@ set -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{25
 You could import the color palette to use with other plugins:
 
 ```lua
-local colors = require("monokai-nightasty.colors").setup()
+local colors = require("martykai.colors").setup()
 
 some_plugin_config.title = colors.blue_light
 example_plugin_config = {
@@ -313,8 +305,8 @@ example_plugin_config = {
 Some color utility functions are available for your use:
 
 ```lua
-local colors = require("monokai-nightasty.colors").setup()
-local util = require("monokai-nightasty.util")
+local colors = require("martykai.colors").setup()
+local util = require("martykai.util")
 
 some_plugin_config.example = util.lighten(colors.bg, 0.5)
 some_plugin_config.another = util.darken(colors.bg, 0.3)
@@ -323,6 +315,9 @@ some_plugin_config.another = util.darken(colors.bg, 0.3)
 ## 🎨 Color Palettes
 
 ### 🌃 Dark Style
+
+>[!NOTE] WiP
+> This shows the original monokai-nightasty
 
 <!-- panvimdoc-ignore-start -->
 

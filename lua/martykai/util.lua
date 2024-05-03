@@ -53,7 +53,7 @@ end
 
 ---@param config Config
 function M.autocmds(config)
-  local group = vim.api.nvim_create_augroup("monokai-nightasty", { clear = true })
+  local group = vim.api.nvim_create_augroup("martykai", { clear = true })
 
   vim.api.nvim_create_autocmd("ColorSchemePre", {
     group = group,
@@ -137,7 +137,7 @@ function M.load(theme)
   end
 
   vim.o.termguicolors = true
-  vim.g.colors_name = "monokai-nightasty"
+  vim.g.colors_name = "martykai"
 
   M.syntax(theme.highlights)
 
