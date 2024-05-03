@@ -275,7 +275,47 @@ function M.setup(palette)
 
     -- Comments
     ["@comment"] = { link = "CommentImportant" }, -- line and block comments
+    gitcommitComment = { link = "Comment" },
     ["@comment.documentation"] = { link = "Comment" }, -- comments documenting code
+    ["@comment.gitcommit"] = { link = "Comment" },
+    --
+    -- diffComment = { link = "CommentDim" },
+    -- CopilotSuggestion = { link = "CommentDim" },
+    -- CopilotAnnotation = { link = "CommentDim" },
+    -- cssHacks = { link = "CommentDim" },
+    -- dtdComment = { link = "CommentDim" },
+    -- dtdParamEntityDPunct = { link = "CommentDim" },
+    -- GitComment = { link = "CommentDim" },
+    -- gitcommitOnBranch = { link = "CommentDim" },
+    -- gitcommitArrow = { link = "CommentDim" },
+    -- gitcommitDiscardedArrow = { link = "CommentDim" },
+    -- gitcommitSelectedArrow = { link = "CommentDim" },
+    -- gitcommitUnmergedArrow = { link = "CommentDim" },
+    -- hamlComment = { link = "CommentDim" },
+    -- hamlHtmlComment = { link = "CommentDim" },
+    -- htmlComment = { link = "CommentDim" },
+    -- htmlCssStyleComment = { link = "CommentDim" },
+    -- LspInfoTip = { link = "CommentDim" },
+    -- markdownBlockquote = { link = "CommentDim" },
+    -- rubyRegexpComment = { link = "CommentDim" },
+    -- rubyComment = { link = "CommentDim" },
+    -- rubyDocumentation = { link = "CommentDim" },
+    -- rubyData = { link = "CommentDim" },
+    -- TelescopeResultsComment = { link = "CommentDim" },
+    -- TroubleCode = { link = "CommentDim" },
+    -- TroubleSource = { link = "CommentDim" },
+    -- vbComment = { link = "CommentDim" },
+    -- vbLineLabel = { link = "CommentDim" },
+    -- vbLineNumber = { link = "CommentDim" },
+    -- xmlAttribPunct = { link = "CommentDim" },
+    -- xmlComment = { link = "CommentDim" },
+    -- xmlCommentStart = { link = "CommentDim" },
+    -- xmlCommentPart = { link = "CommentDim" },
+    -- xmlProcessingDelim = { link = "CommentDim" },
+    -- DiffviewDiffDeleteDim = { link = "CommentDim" },
+    -- DiffviewStatusIgnored = { link = "CommentDim" },
+    -- DiffviewFilePanelPath = { link = "CommentDim" },
+    -- LazyComment = { link = "CommentDim" },
 
     -- ["@comment.error"] = { fg = c.bg, bg = c.error }, -- error-type comments (e.g. `ERROR`, `FIXME`, `DEPRECATED:`)
     -- ["@comment.warning"] = { fg = c.bg, bg = c.warning }, -- warning-type comments (e.g. `WARNING:`, `FIX:`, `HACK:`)
